@@ -1,5 +1,6 @@
 
-# Project 1: Scanning and Enumerating a Local Network with Nmap on macOS
+# Project 1: Scanning and Enumerating a Local Network with Nmap
+
 
 ## 👨‍💻 Author: Swapnil
 
