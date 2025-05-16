@@ -10,7 +10,7 @@ This project simulates a real-world network penetration test using open-source t
 
 ## 📁 Project Contents
 
-- `Polished_CEH_Project_Swapnil.pdf` – Full project report including screenshots and commands used.
+- 'CEH_Project_Swapnil.pdf` – Full project report including screenshots and commands used.
 - Screenshots of each stage: network scanning, service exploitation, and privilege escalation.
 
 ---
