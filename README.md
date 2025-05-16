@@ -1,5 +1,5 @@
 
-# Project 1: Scanning and Enumerating a Local Network with Nmap
+# Project 1: Network Penetration Testing with Real-World Exploits and Security Remediation
 
 
 ## 👨‍💻 Author: Swapnil
