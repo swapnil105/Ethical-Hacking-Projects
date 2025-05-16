@@ -18,6 +18,7 @@
 - **Kali Linux** – Attacker Machine
 - **Metasploitable** – Target Machine
 - **Nmap** – Network Scanning
+- 
 - **Metasploit Framework** – Exploitation
 - **John the Ripper** – Password Cracking
 
