@@ -1,157 +1,93 @@
+# 🛡️ Ethical Hacking Project: Simulating Real-World Network Exploitation and Defense
 
-# Project 1: Network Penetration Testing with Real-World Exploits and Security Remediation
+**Author:** Swapnil  
+**Semester:** 6th  
+**Section:** CY6  
 
-
-## 👨‍💻 Author: Swapnil
-
----
-
-## 🧠 Introduction
-
-In this project, you’ll learn how to use **Nmap**, a powerful network scanning tool, to identify devices and services operating within a local network. Scanning and enumeration are essential skills for ethical hackers, as they assist in recognizing vulnerabilities and gathering vital intel about network infrastructure.
-
-By the end of this project, you’ll be able to:
-
-- Perform basic network scans
-- Detect open ports and services
-- Gather detailed host information using macOS
+This project simulates a real-world network penetration test using open-source tools like **Nmap**, **Metasploit**, and **John the Ripper**. It walks through scanning, enumeration, exploitation, privilege escalation, and remediation techniques, performed in a controlled lab environment.
 
 ---
 
-## 🧾 Pre-requisites
+## 📁 Project Contents
 
-- Basic understanding of IP addresses, ports, and protocols
-- Familiarity with using the Terminal on macOS
-- Nmap installed via [Homebrew](https://brew.sh/) or MacPorts
-
----
-
-## 🛠 Lab Set-up and Tools
-
-- **Attacker Machine**: macOS (Terminal)
-- **Target Machine**: Local devices or VMs (e.g., Ubuntu VM)
-- **Tools Used**:  
-  - Nmap  
+- `Polished_CEH_Project_Swapnil.pdf` – Full project report including screenshots and commands used.
+- Screenshots of each stage: network scanning, service exploitation, and privilege escalation.
 
 ---
 
-## 🔍 Tasks Breakdown
+## 🎯 Objectives
 
-### Task 1: Basic Network Scan
-
-```bash
-nmap -v 192.168.1.0/24
-```
-
-Expected Output:
-```
-Nmap scan report for 192.168.1.5
-PORT     STATE SERVICE
-22/tcp   open  ssh
-80/tcp   open  http
-
-Nmap scan report for 192.168.1.7
-PORT     STATE SERVICE
-443/tcp  open  https
-```
-
-### Task 2: Reconnaissance
-
-#### 2.1 Hidden Port Scan
-```bash
-nmap -v -p- 192.168.1.5
-```
-
-Expected Output:
-```
-PORT      STATE SERVICE
-22/tcp    open  ssh
-80/tcp    open  http
-631/tcp   open  ipp
-5000/tcp  open  upnp
-```
-
-#### 2.2 Service Version Detection
-```bash
-nmap -v -sV 192.168.1.5
-```
-
-Expected Output:
-```
-PORT     STATE SERVICE VERSION
-22/tcp   open  ssh     OpenSSH 8.6 (protocol 2.0)
-80/tcp   open  http    Apache httpd 2.4.54
-631/tcp  open  ipp     CUPS 2.3
-5000/tcp open  upnp    Portable SDK for UPnP devices 1.6.25
-```
-
-#### 2.3 OS Detection
-```bash
-sudo nmap -v -O 192.168.1.5
-```
-
-Expected Output:
-```
-Running: Apple macOS 10.15 - 12.5
-OS CPE: cpe:/o:apple:mac_os_x
-OS details: Apple macOS 10.15.7 (Catalina) or later
-```
+- Simulate real-world network attacks in a lab environment.
+- Learn and practice ethical hacking techniques.
+- Identify vulnerabilities and recommend remediation.
+- Gain experience with popular cybersecurity tools.
 
 ---
 
-## 📋 Task 3: Enumeration Summary
+## 🛠️ Tools Used
 
-- **IP**: 192.168.1.5  
-- **OS**: macOS Catalina or later  
-- **MAC**: B8:E8:56:AA:3C:D1 (Apple Inc.)
-
----
-
-## ⚔️ Task 4: Exploitation (Theoretical)
-
-> Note: macOS has strong security boundaries, so this is only a hypothetical section.
-
-- **OpenSSH 8.6**: No known major vulnerabilities without local access
-- **CUPS**: Older versions vulnerable if exposed publicly
-- **UPnP**: Could allow device enumeration in insecure networks
+- **Kali Linux** – Attacker Machine
+- **Metasploitable** – Target Machine
+- **Nmap** – Network Scanning
+- **Metasploit Framework** – Exploitation
+- **John the Ripper** – Password Cracking
 
 ---
 
-## 👤 Task 5: Creating a Local User on macOS
+## ✅ Tasks Performed
 
-```bash
-sudo sysadminctl -addUser swapnil -fullName "Swapnil" -password hello
-```
+### 1. 🔍 Basic Network Scanning
+- Identify active hosts and open ports using `nmap -v`.
 
-Check with:
-```bash
-dscl . -read /Users/swapnil
-```
+### 2. 🧭 Reconnaissance
+- Full port scans to detect hidden ports.
+- Service version detection using `-sV`.
+- OS fingerprinting with `-O`.
 
----
+### 3. 📋 Enumeration
+- Listing all detected services and ports (both visible and hidden).
+- Collecting OS details and MAC address.
 
-## 🔓 Task 6: Hash Storage (macOS doesn't store traditional hashes)
+### 4. ⚔️ Exploitation
+- **vsftpd 2.3.4** backdoor exploit via Metasploit.
+- **SMB** vulnerability (Samba 3.0.20) exploited with `usermap_script`.
+- Legacy **R Services** (rexec, rlogin, rsh) exploited using default configs.
 
-> macOS uses a secure keychain system; password hashes are not retrievable like in `/etc/shadow`. Therefore, password cracking isn't straightforward on macOS.
+### 5. 👤 Privilege Escalation
+- Created new user with root permissions.
+- Captured `/etc/passwd` and `/etc/shadow` hashes.
 
----
+### 6. 🔓 Password Cracking
+- Cracked password hash using **John the Ripper**.
 
-## 🛡️ Task 7: Remediation and Fixes
-
-| Service     | Fix/Action                                      |
-|-------------|--------------------------------------------------|
-| CUPS        | Restrict to local access or disable unused features |
-| SSH         | Use key-based authentication; disable root login |
-| UPnP        | Disable on networks where not needed              |
-
----
-
-## 🎓 Learnings
-
-- Used Nmap on macOS for full-range scanning and OS detection  
-- Understood enumeration limitations on a secure OS  
-- Practiced adding users and verifying system services securely  
+### 7. 🛡️ Remediation
+- Suggested updates or deprecation of insecure services.
+- Referenced CVEs and official patches.
 
 ---
 
-> **Disclaimer**: This project simulates ethical hacking techniques strictly for educational purposes.
+## 📚 Major Learnings
+
+- How to perform active and passive scanning with Nmap.
+- Exploiting real vulnerabilities in a safe environment.
+- Managing Linux user credentials and cracking passwords.
+- Crafting effective remediation strategies for real vulnerabilities.
+
+---
+
+## 📌 Disclaimer
+
+This project is strictly for educational purposes. All activities were performed in a virtual lab environment and should not be conducted on unauthorized networks.
+
+---
+
+## 📸 Preview
+
+![Nmap Scan Output](screenshots/task1.png)  
+_Full screenshot documentation available inside the PDF report._
+
+---
+
+## 📎 License
+
+MIT License – feel free to fork, learn, and build upon it!
